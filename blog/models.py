@@ -59,7 +59,7 @@ class BlogPage(Page):
             FieldPanel('date'),
             FieldPanel('tags'),
             FieldPanel('categories', widget=forms.CheckboxSelectMultiple),
-        ], heading="Blog information"),
+        ], heading="Blog information"), # Heading es el titulo del panel
         FieldPanel('intro'),
         FieldPanel('body'),
         InlinePanel('gallery_images', label="Gallery images"),
@@ -90,6 +90,10 @@ class BlogTagIndexPage(Page):
 
 @register_snippet
 class BlogCategory(models.Model):
+    '''Snippet para categorias de blog.
+    Este modelo no hereda de Page.
+    Los Snippets los creamos desde el admin de wagtail en `snippets` o `fragmentos`
+    '''
     name = models.CharField(max_length=255)
     icon = models.ForeignKey(
         'wagtailimages.Image', null=True, blank=True,
