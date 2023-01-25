@@ -110,3 +110,21 @@ class BlogCategory(models.Model):
 
     class Meta:
         verbose_name_plural = 'blog categories'
+
+@register_snippet
+class Profesor(models.Model):
+    nombre = models.CharField(max_length=100)
+    apellidos = models.CharField(max_length=100)
+    email = models.EmailField()
+
+    def __str__(self):
+        return self.nombre + ' ' + self.apellidos
+
+    panels = [
+        FieldPanel('apellidos'),
+        FieldPanel('nombre'),
+        FieldPanel('email'),
+    ]
+
+    class Meta:
+        verbose_name_plural = 'profesores'
