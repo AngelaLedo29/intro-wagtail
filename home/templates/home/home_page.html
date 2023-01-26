@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 {% load static %}
-{% load wagtailcore_tags %}
+{% load wagtailcore_tags wagtailimages_tags %}
 
 {% block body_class %}template-homepage{% endblock %}
 
@@ -29,6 +29,7 @@
 {% endblock extra_css %}
 
 {% block content %}
+<!--
 <div class="wrap">
     <div class="glide hero">
         <div class="glide__track" data-glide-el="track">
@@ -40,6 +41,37 @@
         </div>
     </div>
 </div>
+-->
+
+<div class="wrap">
+    <div class="micarrusel">
+        <div class="glide__track" data-glide-el="track">
+            <ul class="glide__slides">
+                {% for item in page.gallery_images.all|make_list %}
+                <li class="glide__slide">
+                    <img src="{% image item.image fill-300x200 %}" class="slide">
+                </li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+</div>
+
+<!--
+<div class="wrap">
+    <div class="micarrusel">
+        <div class="glide__track" data-glide-el="track">
+            <ul class="glide__slides">
+                {% for n in '123456'|make_list %}
+                <li class="glide__slide">
+                    <img src="{% get_static_prefix %}carousel/{{n}}.png" class="slide">
+                </li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+</div>
+-->
 
 {{ page.body | richtext }}
 
