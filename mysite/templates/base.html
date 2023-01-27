@@ -37,16 +37,18 @@
     </head>
 
     <body class="{% block body_class %}{% endblock %}">
-        {% include 'menus/main_menu.html' %}
         {% wagtailuserbar %}
-        {% main_menu max_levels=3 template="menus/main_menu.html" %}
-
         {% include 'components/navbar.html' %}
+        <!--{% include 'menus/main_menu.html' %}
+        {% main_menu max_levels=3 template="menus/main_menu.html" %}-->
+
 
         {% block content %}{% endblock %}
 
         {# Global javascript #}
         <script type="text/javascript" src="{% static 'js/mysite.js' %}"></script>
+
+        {% include 'components/footer.html' %}
 
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.slim.min.js" integrity="sha512-/DXTXr6nQodMUiq+IUJYCt2PPOUjrHJ9wFrqpJ3XkgPNOZVfMok7cRw6CSxyCQxXn6ozlESsSh1/sMCTF1rL/g==" crossorigin="anonymous"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.3/js/bootstrap.bundle.min.js" integrity="sha512-iceXjjbmB2rwoX93Ka6HAHP+B76IY1z0o3h+N1PeDtRSsyeetU3/0QKJqGyPJcX63zysNehggFwMC/bi7dvMig==" crossorigin="anonymous"></script>
